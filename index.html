@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kasvavat Kiskot — Growing Rails Laboratory</title>
+<style>
+:root{color-scheme:dark;--bg:#070e17;--panel:#101e2c;--panel2:#142737;--line:#294355;--text:#e8f3f6;--muted:#91a9b8;--cyan:#68efd5;--orange:#ffc078;--pink:#db99ff;--red:#ff8583}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 85% 45% at 65% 0%,#173242 0%,#091520 65%,#070e17 100%);font:14px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--text);min-height:100vh}
+header{max-width:1440px;margin:auto;padding:25px 28px 12px;display:flex;justify-content:space-between;align-items:start;gap:20px;flex-wrap:wrap}h1{font-size:clamp(30px,4vw,52px);letter-spacing:-.065em;line-height:1.02;margin:5px 0 10px;font-weight:780}.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:750}p{color:var(--muted);margin:5px 0 12px}.intro{max-width:730px;font-size:15px}.meta{font-size:11px;color:#a8c0cf;border:1px solid var(--line);border-radius:100px;padding:7px 12px;margin-top:6px}
+main{max-width:1440px;margin:auto;padding:10px 28px 35px;display:grid;grid-template-columns:minmax(0,1.75fr) minmax(295px,.85fr);gap:15px}.panel{border:1px solid var(--line);border-radius:15px;background:linear-gradient(130deg,rgba(19,38,53,.97),rgba(11,24,37,.97));box-shadow:0 10px 35px #0003;overflow:hidden}.heading{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #284253;gap:10px}.heading h2{font-size:15px;margin:0;letter-spacing:.015em}.tiny{font-size:11px;color:var(--muted)}.field{padding:14px 18px}.canvaswrap{padding:12px;background:#071521}canvas#yard{display:block;width:100%;height:auto;aspect-ratio:1.62;touch-action:manipulation;cursor:crosshair;border-radius:8px}canvas#trend{display:block;width:100%;height:105px}.legend{display:flex;flex-wrap:wrap;gap:12px;padding:12px 18px 18px;font-size:12px;color:#b2cbd9}.dot{display:inline-block;width:8px;height:8px;border-radius:100%;margin-right:5px}.ctrls{display:flex;gap:7px;flex-wrap:wrap}.controls{padding:15px 18px;display:grid;gap:12px}button,select{border:1px solid #37566a;color:var(--text);background:#132d3d;border-radius:9px;padding:9px 12px;font:600 12px system-ui;cursor:pointer}button:hover,select:hover{border-color:#61d4bd;background:#1c3e4d}button.primary{background:#0e655d;color:#e7fff9;border-color:#279e8e}button.danger{border-color:#86565e;color:#ffb2ad}button:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}select{width:100%;margin-top:5px}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#0b1d2b;border:1px solid #244052;border-radius:10px;padding:12px 10px}.metric .big{font-size:23px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.05em;line-height:1.25}.metric small{color:var(--muted);font-size:10px;display:block;margin-top:5px}.bar{background:#0a1825;height:10px;border:1px solid #284357;border-radius:20px;overflow:hidden}.bar>div{height:100%;background:linear-gradient(90deg,#27a69e,var(--cyan));transition:width .16s}.story{color:#bed3de;font-size:12px;min-height:52px;margin-top:6px}.modehelp{font-size:12px;color:#a0b8c6}.results{grid-column:1/-1}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:11px 16px;text-align:left;border-bottom:1px solid #274254}th{font-weight:650;color:#a7c5d2}td b{color:#7ce9d1}.note{padding:14px 18px;font-size:12px;color:#a8c0cf}.footer{max-width:1440px;margin:auto;color:#7894a4;padding:0 28px 32px;font-size:12px}a{color:#7ddfdb;text-decoration:none}a:hover{text-decoration:underline}.barlabel{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.subheading{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#78e0ce;margin:4px 0 0}#inspect{min-height:48px;font-size:12px;color:#b0cad7}#inspect strong{color:white}@media(max-width:880px){main{grid-template-columns:1fr}.results{grid-column:1}.metricgrid{grid-template-columns:repeat(3,1fr)}}@media(max-width:520px){header,main{padding-left:13px;padding-right:13px}.metric .big{font-size:19px}.heading{padding:12px}.field,.controls{padding:12px}table{font-size:11px}th,td{padding:8px}}
+</style>
+</head>
+<body>
+<header><div><div class="eyebrow">Antti's laboratory · Independent Sol experiment</div><h1>Kasvavat Kiskot <span style="color:var(--cyan)">↗</span></h1><p class="intro">Growing rails. Regenerating train factories. Each yard listens on its own clock; exploratory feelers discover routes, target replies reinforce them, and a finite construction budget decides what survives.</p></div><div class="meta">NO SERVER · JAVASCRIPT · 2026</div></header>
+<main>
+<section class="panel">
+  <div class="heading"><h2>Living rail substrate</h2><span class="tiny" id="phaseStatus">12 × 7 nodes · exploratory feelers</span></div>
+  <div class="canvaswrap"><canvas id="yard" width="980" height="602" aria-label="Interactive growing rail graph"></canvas></div>
+  <div class="legend"><span><i class="dot" style="background:#68efd5"></i>Built rail</span><span><i class="dot" style="background:#db99ff"></i>Current exploratory route</span><span><i class="dot" style="background:#ff8583"></i>Severed rail</span><span><i class="dot" style="background:#ffc078"></i>Source / target</span></div>
+  <div class="heading"><h2>Delivery history</h2><span class="tiny">Each point = one train / acknowledgment round</span></div><div class="field"><canvas id="trend" width="900" height="115"></canvas></div>
+</section>
+<aside class="panel"><div class="heading"><h2>Switchyard controls</h2><span class="tiny">Live experiment</span></div>
+ <div class="controls"><label class="tiny">Learning policy<select id="mode"><option value="phase">Phase-sensitive acknowledgment</option><option value="flow">Flow-only reinforcement</option><option value="static">Static rails / no growth</option></select></label>
+  <div class="ctrls"><button class="primary" id="step">Send one train</button><button id="grow">Run 35 rounds</button><button id="auto">▶ Auto-run</button></div>
+  <div class="ctrls"><button class="danger" id="cut">✂ Cut learned route</button><button id="retarget">↗ Move target B → C</button></div>
+  <div class="ctrls"><button id="headstart">Give wrong route a head start</button><button id="reset">Reset terrain</button></div>
+  <div class="metricgrid"><div class="metric"><div class="big" id="rounds">0</div><small>Training rounds</small></div><div class="metric"><div class="big" id="eta">—</div><small>Delivery time / ticks</small></div><div class="metric"><div class="big" id="active">0</div><small>Built active rails</small></div></div>
+  <div class="barlabel"><span>Construction material</span><span id="budgetNum">0 / 15</span></div><div class="bar"><div id="budgetFill" style="width:0%"></div></div>
+  <div class="modehelp" id="modehelp">Target ACKs reward rails that deliver in the correct phase windows.</div>
+  <div class="story" id="story" aria-live="polite">Click “Send one train” and watch violet feelers explore, then cyan rails grow.</div>
+  <div class="subheading">Selected junction</div><div id="inspect">Click any station to inspect its clock.</div>
+ </div>
+</aside>
+<section class="panel results"><div class="heading"><h2>Controlled comparison</h2><button id="compare">Reproduce all three baselines</button></div><div class="tablewrap"><table><thead><tr><th>Policy</th><th>Learned route</th><th>After cut + 45 rounds</th><th>Retarget C + 55</th><th>Wrong-route trap</th></tr></thead><tbody id="compareRows"><tr><td colspan="5" style="color:#9cb8c7">Click “Reproduce all three baselines” for a deterministic benchmark.</td></tr></tbody></table></div><p class="note">The violet search pulse probes every candidate edge, including thin feelers. The first arrival is a Dijkstra-like distributed wavefront, not an unknown global optimization miracle. The shared resource budget is enforced centrally. Clock periods and terrain are designed, not biological data.</p></section>
+</main>
+<div class="footer"><a href="https://github.com/anttiluode/KasvavatKiskotSol">Source repository</a> · Open <code>index.html</code> together with <code>growing_rails.js</code> for fully offline use. The canvas represents the same numerical state as the Node tests and experiment.</div>
+<script src="growing_rails.js"></script>
+<script>
+(function(){'use strict';
+const G=window.GrowingRails,cn=document.getElementById('yard'),ctx=cn.getContext('2d'),chart=document.getElementById('trend'),cc=chart.getContext('2d');
+const $=id=>document.getElementById(id);let mode='phase',n,timer=null,lastCut=null,selected=null,anim=0;
+function reset(){stop();n=G.makeNetwork({mode,budget:15});if(mode==='static')G.buildStatic(n);selected=null;lastCut=null;draw();write('Fresh terrain. The thin possible edges are exploratory feelers, not built roads.');}
+function write(msg){$('story').textContent=msg;}
+function sayRound(d){write(d.complete?'A target reply strengthened '+d.probe.length+' rails. A connected route now delivers in '+d.deliveryTime+' ticks.':'The forward pulse reached the target through exploratory feelers. The acknowledgment is growing its route; built rails do not yet connect.');}
+function step(){const d=G.episode(n);sayRound(d);draw();}
+function multiple(k){for(let j=0;j<k;j++)G.episode(n);const s=G.snapshot(n);write(k+' rounds completed. '+(s.delivery.found?'Built railway delivers in '+s.delivery.time+' ticks.':'Still no fully constructed route.')+' Rail material: '+s.mass.toFixed(2)+' / '+n.budget+'.');draw();}
+function stop(){if(timer)clearInterval(timer);timer=null;$('auto').textContent='▶ Auto-run';}
+function toggle(){if(timer){stop();return;}timer=setInterval(()=>{step();},250);$('auto').textContent='Ⅱ Pause';}
+function position(v){const sx=57,sy=62,dx=(cn.width-114)/(n.width-1),dy=(cn.height-130)/(n.height-1);return [sx+v.x*dx,sy+v.y*dy];}
+function draw(){if(!n)return;anim++;ctx.clearRect(0,0,cn.width,cn.height);
+  const grad=ctx.createLinearGradient(0,0,cn.width,cn.height);grad.addColorStop(0,'#071523');grad.addColorStop(1,'#0d2430');ctx.fillStyle=grad;ctx.fillRect(0,0,cn.width,cn.height);
+  ctx.strokeStyle='#244153';ctx.lineWidth=1;ctx.globalAlpha=.19;
+  for(let x=0;x<cn.width;x+=38){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cn.height);ctx.stroke();}
+  for(let y=0;y<cn.height;y+=38){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cn.width,y);ctx.stroke();}ctx.globalAlpha=1;
+  const probe=new Set(n.lastPath||[]),live=new Set(G.snapshot(n).delivery.edges);
+  for(const e of n.edges){const a=position(n.nodes[e.a]),b=position(n.nodes[e.b]),strong=e.mass>=n.threshold;
+    ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);
+    if(e.broken){ctx.strokeStyle='#ff777c';ctx.lineWidth=4;ctx.setLineDash([6,8]);}
+    else if(live.has(e.id)){ctx.strokeStyle='#68efd5';ctx.lineWidth=5+e.mass*4;ctx.setLineDash([]);}
+    else if(strong){ctx.strokeStyle='rgba(108,189,204,.87)';ctx.lineWidth=1.5+e.mass*5;ctx.setLineDash([]);}
+    else if(probe.has(e.id)){ctx.strokeStyle='#b785e9';ctx.lineWidth=3.1;ctx.setLineDash([3,5]);}
+    else {ctx.strokeStyle='rgba(118,160,178,'+(.10+e.mass*.45)+')';ctx.lineWidth=1;ctx.setLineDash([1,7]);}
+    ctx.stroke();ctx.setLineDash([]);
+  }
+  const s=G.snapshot(n);if(s.delivery.found&&s.delivery.nodes.length>1){const path=s.delivery.nodes;const progress=(anim%24)/24*(path.length-1),i=Math.floor(progress),f=progress-i;if(i+1<path.length){const a=position(n.nodes[path[i]]),b=position(n.nodes[path[i+1]]);ctx.beginPath();ctx.arc(a[0]+f*(b[0]-a[0]),a[1]+f*(b[1]-a[1]),7,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.shadowBlur=15;ctx.shadowColor='#68efd5';ctx.fill();ctx.shadowBlur=0;}}
+  for(const v of n.nodes){const [x,y]=position(v),isS=v.id===n.source,isB=v.id===n.targets.B,isC=v.id===n.targets.C,active=isS||isB||isC;
+    ctx.beginPath();ctx.arc(x,y,active?11:5,0,Math.PI*2);ctx.fillStyle=isS?'#ffc078':isB?(n.target==='B'?'#68efd5':'#7390a3'):isC?(n.target==='C'?'#68efd5':'#7390a3'):'#234456';ctx.fill();
+    if(active){ctx.lineWidth=2;ctx.strokeStyle='#daeee8';ctx.stroke();ctx.font='bold 13px system-ui';ctx.fillStyle='#e5f4f7';ctx.fillText(isS?'SOURCE':isB?'B':'C',x+13,y-13);}
+    else {ctx.beginPath();ctx.arc(x,y,8,0,(n.rounds%v.period)/v.period*Math.PI*2);ctx.strokeStyle='rgba(112,232,212,.55)';ctx.lineWidth=1.3;ctx.stroke();}
+    if(selected===v.id){ctx.beginPath();ctx.arc(x,y,15,0,Math.PI*2);ctx.strokeStyle='#e6a7fd';ctx.lineWidth=2;ctx.stroke();}
+  }
+  $('rounds').textContent=n.rounds;$('eta').textContent=s.delivery.found?s.delivery.time:'—';$('active').textContent=s.active;
+  $('budgetNum').textContent=s.mass.toFixed(2)+' / '+n.budget;$('budgetFill').style.width=Math.min(100,100*s.mass/n.budget)+'%';
+  $('phaseStatus').textContent=n.nodes.length+' stations · '+n.edges.length+' possible rails · destination '+n.target;
+  if(selected!==null){const v=n.nodes[selected],adj=n.adjacent[selected].map(id=>n.edges[id]);$('inspect').innerHTML='<strong>('+v.x+', '+v.y+')</strong> · period '+v.period+' ticks · phase offset '+v.offset+' · '+adj.filter(e=>e.mass>=n.threshold&&!e.broken).length+'/'+adj.length+' active branches';}
+  drawTrend();
+}
+function drawTrend(){const w=chart.width,h=chart.height;cc.clearRect(0,0,w,h);cc.fillStyle='#0a1b29';cc.fillRect(0,0,w,h);const seq=n.history.slice(-100);cc.strokeStyle='#25475b';cc.lineWidth=1;
+  for(let k=0;k<=3;k++){cc.beginPath();cc.moveTo(0,18+k*26);cc.lineTo(w,18+k*26);cc.stroke();}
+  if(seq.length<2)return;
+  const max=160;cc.beginPath();for(let i=0;i<seq.length;i++){const val=seq[i].deliveryTime;const x=(i/(seq.length-1))*(w-10)+5,y=val===null?h-5:h-10-Math.min(1,val/max)*(h-20);if(i===0)cc.moveTo(x,y);else cc.lineTo(x,y);}cc.strokeStyle='#6ee6d1';cc.lineWidth=2.5;cc.stroke();
+  cc.fillStyle='#a8c2cf';cc.font='11px sans-serif';cc.fillText('no route = bottom',12,16);
+}
+$('step').onclick=step;$('grow').onclick=()=>multiple(35);$('auto').onclick=toggle;
+$('cut').onclick=()=>{lastCut=G.lesion(n);write(lastCut?'Severed active rail '+lastCut.edge+' (was '+lastCut.before+' ticks). Continue training to test regrowth.':'No connected route to cut yet.');draw();};
+$('retarget').onclick=()=>{n.target=n.target==='B'?'C':'B';write('Destination switched to '+n.target+'. Old rails remain. See whether the network reassigns its construction budget.');draw();};
+$('headstart').onclick=()=>{stop();reset();G.primeWorseRoute(n);write('Built the raw-shortest road first. Does a phase-aware network abandon it for a faster timed route?');draw();};
+$('reset').onclick=reset;$('mode').onchange=e=>{mode=e.target.value;reset();$('modehelp').textContent=mode==='phase'?'Target acknowledgments reinforce the quickest actual phase-gated route.':mode==='flow'?'Raw transport time alone chooses the route; clock waiting is ignored during construction.':'The initially built raw-shortest route stays fixed. No construction or healing.';};
+$('compare').onclick=()=>{const modes=['phase','flow','static'];const cells=modes.map(m=>{const r=G.runScenario(m,{budget:15});const n2=G.makeNetwork({mode:m,budget:15});G.primeWorseRoute(n2);const prev=G.snapshot(n2).delivery.time;G.train(n2,45);const now=G.snapshot(n2).delivery.time;const s=x=>x===null?'no route':x+' ticks';return '<tr><td><b>'+({'phase':'Phase-aware','flow':'Flow only','static':'Static'}[m])+'</b></td><td>'+s(r.learned.delivery.time)+'</td><td>'+s(r.recovered.delivery.time)+'</td><td>'+s(r.retargeted.delivery.time)+'</td><td>'+s(prev)+' → '+s(now)+'</td></tr>';});$('compareRows').innerHTML=cells.join('');};
+cn.onclick=e=>{const rect=cn.getBoundingClientRect(),x=(e.clientX-rect.left)*cn.width/rect.width,y=(e.clientY-rect.top)*cn.height/rect.height;let best=1e9,idx=null;for(const v of n.nodes){const p=position(v),d=Math.hypot(x-p[0],y-p[1]);if(d<best){best=d;idx=v.id;}}if(best<30){selected=idx;draw();}};
+reset();setInterval(()=>{if(!timer) {anim++;if(n&&G.snapshot(n).delivery.found)draw();}},140);
+})();
+</script>
+</body></html>

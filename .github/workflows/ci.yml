@@ -1,0 +1,16 @@
+name: Growing Rails regression
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/growing_rails.test.js
+      - run: node experiments/run.js
+      - name: Reproducible experimental receipt
+        run: git diff --exit-code -- results/results.json

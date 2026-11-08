@@ -1,0 +1,246 @@
+{
+  "description": "Designed deterministic phase-gated pulse+ACK growing graph, not biology",
+  "provenance": "node experiments/run.js",
+  "seed": "none; fixed map and tie-order",
+  "budget": 15,
+  "terrain": "12x7 lattice with blocked central cells and heterogeneous travel time",
+  "costs": "physical delivery includes phase waits; flow-only growth ignores them",
+  "schedule": {
+    "growth": 35,
+    "after_lesion": 45,
+    "after_retarget": 55
+  },
+  "phase": {
+    "start": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 0,
+      "rail_mass": 3.475,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "after_growth": {
+      "route_found": true,
+      "route_ticks": 73,
+      "route_edges": 15,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "lesion_edge": 115,
+    "just_after_lesion": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 80,
+      "available_edges": 15
+    },
+    "after_repair": {
+      "route_found": true,
+      "route_ticks": 80,
+      "route_edges": 15,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 80,
+      "available_edges": 15
+    },
+    "immediately_after_retarget": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "after_retarget": {
+      "route_found": true,
+      "route_ticks": 78,
+      "route_edges": 14,
+      "active_edges": 14,
+      "rail_mass": 14.209834,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "first_connected_round": 2,
+    "first_recovered_round": 38,
+    "first_retargeted_round": 82
+  },
+  "flow_only": {
+    "start": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 0,
+      "rail_mass": 3.475,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "after_growth": {
+      "route_found": true,
+      "route_ticks": 94,
+      "route_edges": 15,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "lesion_edge": 33,
+    "just_after_lesion": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "after_repair": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "immediately_after_retarget": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "after_retarget": {
+      "route_found": true,
+      "route_ticks": 118,
+      "route_edges": 14,
+      "active_edges": 14,
+      "rail_mass": 14.205882,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "first_connected_round": 2,
+    "first_recovered_round": 37,
+    "first_retargeted_round": 82
+  },
+  "static": {
+    "start": {
+      "route_found": true,
+      "route_ticks": 94,
+      "route_edges": 15,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "after_growth": {
+      "route_found": true,
+      "route_ticks": 94,
+      "route_edges": 15,
+      "active_edges": 15,
+      "rail_mass": 15,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "lesion_edge": 33,
+    "just_after_lesion": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "after_repair": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 73,
+      "available_edges": 15
+    },
+    "immediately_after_retarget": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "after_retarget": {
+      "route_found": false,
+      "route_ticks": null,
+      "route_edges": 0,
+      "active_edges": 14,
+      "rail_mass": 14,
+      "potential_ticks": 78,
+      "available_edges": 14
+    },
+    "first_connected_round": 1,
+    "first_recovered_round": null,
+    "first_retargeted_round": null
+  },
+  "worse_route_headstart": {
+    "phase": {
+      "start": {
+        "route_found": true,
+        "route_ticks": 94,
+        "route_edges": 15,
+        "active_edges": 15,
+        "rail_mass": 14.524,
+        "potential_ticks": 73,
+        "available_edges": 15
+      },
+      "after": {
+        "route_found": true,
+        "route_ticks": 73,
+        "route_edges": 15,
+        "active_edges": 15,
+        "rail_mass": 15,
+        "potential_ticks": 73,
+        "available_edges": 15
+      },
+      "connected_trials": 44,
+      "peak_rail_mass": 15
+    },
+    "flow_only": {
+      "start": {
+        "route_found": true,
+        "route_ticks": 94,
+        "route_edges": 15,
+        "active_edges": 15,
+        "rail_mass": 14.524,
+        "potential_ticks": 73,
+        "available_edges": 15
+      },
+      "after": {
+        "route_found": true,
+        "route_ticks": 94,
+        "route_edges": 15,
+        "active_edges": 15,
+        "rail_mass": 15,
+        "potential_ticks": 73,
+        "available_edges": 15
+      },
+      "connected_trials": 45,
+      "peak_rail_mass": 15
+    }
+  },
+  "caveats": [
+    "Exploration uses all candidate feeler edges, irrespective of constructed rail mass.",
+    "First-arrival wavefront is a distributed Dijkstra-like search; the phase-aware growth target is the earliest-arrival path by construction.",
+    "Budget pool is global, not fully local resource diffusion.",
+    "The destination and success criterion come from the experimenter; no endogenous ought.",
+    "No private jitter or stochastic generalization tested."
+  ]
+}
